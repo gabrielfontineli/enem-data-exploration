@@ -1,0 +1,5 @@
+outs:
+- md5: 287848d8073a3fcfa23cebdeb0f65af8
+  size: 744684881
+  hash: md5
+  path: microdados_enem_2024.zip
