@@ -1,0 +1,5 @@
+outs:
+- md5: b86d2f28eccffd606446f1bbea902c7c
+  size: 520568121
+  hash: md5
+  path: microdados_enem_2023.zip
