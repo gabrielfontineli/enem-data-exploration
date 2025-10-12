@@ -99,3 +99,12 @@ Desktop.ini
 *.pyc
 *.pyo
 *.pyd
+
+
+# Relatórios gerados
+reports/figures/
+reports/tabelas/
+
+*.zip
+*.parquet
+*.csv

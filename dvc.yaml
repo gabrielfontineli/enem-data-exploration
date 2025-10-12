@@ -1,0 +1,26 @@
+stages:
+  unzip_2024:
+    cmd: rm -rf data/interim/unzipped_2024 && LANG=pt_BR.UTF-8 
+      LC_ALL=pt_BR.UTF-8 ditto -x -k data/raw/microdados_enem_2024.zip 
+      data/interim/unzipped_2024
+    deps:
+    - data/raw/microdados_enem_2024.zip
+    outs:
+    - data/interim/unzipped_2024
+  unzip_2023:
+    cmd: rm -rf data/interim/unzipped_2023 && LANG=pt_BR.UTF-8 
+      LC_ALL=pt_BR.UTF-8 ditto -x -k data/raw/microdados_enem_2023.zip 
+      data/interim/unzipped_2023
+    deps:
+    - data/raw/microdados_enem_2023.zip
+    outs:
+    - data/interim/unzipped_2023
+  prepare_2023:
+    cmd: python src/prepare_enem.py 
+      data/interim/unzipped_2023/DADOS/MICRODADOS_ENEM_2023.csv 
+      data/interim/enem_2023.parquet
+    deps:
+    - data/interim/unzipped_2023/DADOS/MICRODADOS_ENEM_2023.csv
+    - src/prepare_enem.py
+    outs:
+    - data/interim/enem_2023.parquet

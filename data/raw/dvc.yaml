@@ -1,0 +1,8 @@
+stages:
+  unzip_2024:
+    cmd: rm -rf data/interim/unzipped_2024 && unzip -o 
+      data/raw/microdados_enem_2024.zip -d data/interim/unzipped_2024
+    deps:
+    - data/raw/microdados_enem_2024.zip
+    outs:
+    - data/interim/unzipped_2024

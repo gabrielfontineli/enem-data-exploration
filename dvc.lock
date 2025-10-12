@@ -1,0 +1,50 @@
+schema: '2.0'
+stages:
+  unzip_2024:
+    cmd: rm -rf data/interim/unzipped_2024 && LANG=en_US.UTF-8 
+      LC_ALL=en_US.UTF-8 ditto -x -k data/raw/microdados_enem_2024.zip 
+      data/interim/unzipped_2024
+    deps:
+    - path: data/raw/microdados_enem_2024.zip
+      hash: md5
+      md5: 287848d8073a3fcfa23cebdeb0f65af8
+      size: 744684881
+    outs:
+    - path: data/interim/unzipped_2024
+      hash: md5
+      md5: a234e30fc334ff5076fb2408ec1893c9.dir
+      size: 2412956993
+      nfiles: 84
+  unzip_2023:
+    cmd: rm -rf data/interim/unzipped_2023 && LANG=pt_BR.UTF-8 
+      LC_ALL=pt_BR.UTF-8 ditto -x -k data/raw/microdados_enem_2023.zip 
+      data/interim/unzipped_2023
+    deps:
+    - path: data/raw/microdados_enem_2023.zip
+      hash: md5
+      md5: b86d2f28eccffd606446f1bbea902c7c
+      size: 520568121
+    outs:
+    - path: data/interim/unzipped_2023
+      hash: md5
+      md5: bfe44d6dfabcd2f24e012fb6c6eeab00.dir
+      size: 1923724121
+      nfiles: 83
+  prepare_2023:
+    cmd: python src/prepare_enem.py 
+      data/interim/unzipped_2023/DADOS/MICRODADOS_ENEM_2023.csv 
+      data/interim/enem_2023.parquet
+    deps:
+    - path: data/interim/unzipped_2023/DADOS/MICRODADOS_ENEM_2023.csv
+      hash: md5
+      md5: c7b2dd9b3809030bb0c862dc11580dbc
+      size: 1777162429
+    - path: src/prepare_enem.py
+      hash: md5
+      md5: f61cb9e1633a3b7d98878d9bc2ab9351
+      size: 2166
+    outs:
+    - path: data/interim/enem_2023.parquet
+      hash: md5
+      md5: 0e3c3187c8d809cb4b6ab32bfbf71189
+      size: 31216047
