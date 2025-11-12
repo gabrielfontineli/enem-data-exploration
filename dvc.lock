@@ -41,10 +41,10 @@ stages:
       size: 1777162429
     - path: src/prepare_enem.py
       hash: md5
-      md5: f61cb9e1633a3b7d98878d9bc2ab9351
-      size: 2166
+      md5: b69cb6f95fb30a9a27a22920db3f88df
+      size: 4275
     outs:
     - path: data/interim/enem_2023.parquet
       hash: md5
-      md5: 0e3c3187c8d809cb4b6ab32bfbf71189
-      size: 31216047
+      md5: 8396a15be0fc3e9b94966d8c85520e89
+      size: 44633295
